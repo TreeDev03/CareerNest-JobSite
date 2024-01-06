@@ -2,7 +2,9 @@ package com.example.joblisting.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 import java.util.Arrays;
+
 
 @Document(collection = "jobPost" )
 public class Post {
@@ -13,6 +15,9 @@ public class Post {
     private String desc;
     private int exp;
     private String [] techs;
+
+    private String email;
+
 
     public Post() {
 
@@ -52,6 +57,14 @@ public class Post {
         this.techs = techs;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -59,6 +72,7 @@ public class Post {
                 ", desc='" + desc + '\'' +
                 ", exp=" + exp +
                 ", techs=" + Arrays.toString(techs) +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
