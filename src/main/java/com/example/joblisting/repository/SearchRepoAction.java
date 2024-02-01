@@ -1,5 +1,6 @@
 package com.example.joblisting.repository;
 
+import java.util.Random;
 
 import com.example.joblisting.model.Post;
 import com.mongodb.client.AggregateIterable;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class SearchRepoAction implements SearchRepository {
@@ -36,7 +38,7 @@ public class SearchRepoAction implements SearchRepository {
                        (new Document("$search",
                         new Document("index", "default")
                         .append("text",
-                        new Document("query", "java")
+                        new Document("query", text)
                         .append("path", Arrays.asList("techs", "desc", "profile")))),
                         new Document("$sort",
                         new Document("exp", 1L)),
@@ -47,4 +49,21 @@ public class SearchRepoAction implements SearchRepository {
 
         return posts;
     }
-}
+
+    @Override
+    public String RandomNumberGenerator() {
+
+        Random random = new Random();
+        StringBuilder randomCodeBuilder = new StringBuilder();
+
+        // Generate 20 random digits and append them to the StringBuilder
+        for (int i = 0; i < 20; i++) {
+            int randomDigit = random.nextInt(10);
+            randomCodeBuilder.append(randomDigit);
+        }
+
+        return randomCodeBuilder.toString();
+    }
+
+
+    }

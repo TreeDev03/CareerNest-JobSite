@@ -11,4 +11,9 @@ public interface SearchRepository {
 
     List<Post> findByText(String text);
 
+    String RandomNumberGenerator();
+
+
+
+
 }
